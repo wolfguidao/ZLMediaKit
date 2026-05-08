@@ -66,11 +66,6 @@ ProtocolOption::ProtocolOption() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-struct MediaSourceNull : public MediaSource {
-    MediaSourceNull() : MediaSource("schema", MediaTuple{"vhost", "app", "stream", ""}) {};
-    int readerCount() override { return 0; }
-};
-
 MediaSource &MediaSource::NullMediaSource() {
     static std::shared_ptr<MediaSource> s_null = std::make_shared<MediaSourceNull>();
     return *s_null;

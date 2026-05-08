@@ -237,8 +237,6 @@ protected:
     bool onTrackFrame(const Frame::Ptr &frame) override;
     bool onTrackFrame_l(const Frame::Ptr &frame);
 
-    MediaSource::Ptr getAnyMediaSource() const;
-
 private:
     void createGopCacheIfNeed(size_t gop_count);
     std::shared_ptr<MediaSinkInterface> makeRecorder(Recorder::type type);
@@ -267,9 +265,8 @@ private:
     HlsFMP4Recorder::Ptr _hls_fmp4;
     toolkit::EventPoller::Ptr _poller;
     RingType::Ptr _ring;
-
     MediaSinkInterface::Ptr _delegate;
-
+    MediaSourceNull::Ptr _null_src;
     // 对象个数统计  [AUTO-TRANSLATED:3b43e8c2]
     // Object count statistics
     toolkit::ObjectStatistic<MultiMediaSourceMuxer> _statistic;
